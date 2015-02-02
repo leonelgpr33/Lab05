@@ -20,11 +20,14 @@
 @property (strong, nonatomic) IBOutlet UISlider *sldRed;
 @property (strong, nonatomic) IBOutlet UISlider *sldGreen;
 @property (strong, nonatomic) IBOutlet UISlider *sldBlue;
+@property (strong, nonatomic) IBOutlet UISlider *sldAlpha;
+@property (strong, nonatomic) IBOutlet UILabel *lblTwinkle;
 
 //Actions
 - (IBAction)actRed:(id)sender;
 - (IBAction)actGreen:(id)sender;
 - (IBAction)actBlue:(id)sender;
+- (IBAction)actAplha:(id)sender;
 
 
 @end

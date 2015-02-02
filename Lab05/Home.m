@@ -11,6 +11,9 @@
 float rojo;
 float verde;
 float azul;
+float twinkle;
+
+NSTimer *myTimer;
 
 @interface Home ()
 
@@ -28,6 +31,10 @@ float azul;
     // Dispose of any resources that can be recreated.
 }
 
+- (void)blink{
+    self.lblColor.alpha = self.lblColor.alpha ? 0 : 1;
+   
+}
 - (void)changeColor{
     self.lblColor.backgroundColor = [UIColor colorWithRed:(rojo/255) green:(verde/255) blue:(azul/255) alpha:1];
 }
@@ -47,5 +54,21 @@ float azul;
     azul = self.sldBlue.value;
     self.lblBlue.text = [NSString stringWithFormat:@"Azul: %.f",azul];
     [self changeColor];
+}
+
+- (IBAction)actAplha:(id)sender {
+    twinkle = self.sldAlpha.value;
+    self.sldAlpha.value = round(self.sldAlpha.value);
+    [myTimer invalidate];
+    myTimer = nil;
+    if (self.sldAlpha.value) {
+        myTimer = [NSTimer scheduledTimerWithTimeInterval:(self.sldAlpha.value) target:self selector:@selector(blink) userInfo:nil repeats:YES];
+    }
+    else
+    {
+        self.lblColor.alpha=1;
+    }
+    self.lblTwinkle.text = [NSString stringWithFormat:@"twinkle: %.f",twinkle];
+    
 }
 @end
